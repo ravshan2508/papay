@@ -10,14 +10,25 @@ memberController.signup = async (req,res) => {
 
         res.json({state: 'success',data: new_member});
     } catch(err) {
-        console.log(`ERROR,cont/signup`);
+        console.log(`ERROR,cont/signup,${err.message}`);
+        res.json({state: 'fail',message: err.message});
     }
     
 };
 
-memberController.login = (req,res) => {
-    console.log("GET cont.login");
-    res.send("You are in login page");
+memberController.login = async (req,res) => {
+    try {  
+        console.log(`GET: cont/login`);
+        const data = req.body;
+        const member = new Member();
+        const new_member =  await member.loginData(data);
+
+        res.json({state: 'success',data: new_member});
+    } catch(err) {
+        console.log(`ERROR,cont/login,${err.message}`);
+        res.json({state: 'fail',message: err.message});
+    }
+    
 };
 
 memberController.logout = (req,res) => {

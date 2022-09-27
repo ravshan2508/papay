@@ -1,5 +1,7 @@
 const MemberModel = require("../schema/member.model");
 const Definer = require("../lib/mistakes");
+const assert = require('assert');
+const { findOne } = require("../schema/member.model");
 class Member {
     constructor() {
         this.memberModel = MemberModel;
@@ -21,12 +23,31 @@ class Member {
         } catch (err) {
             throw(err);
         }
-
-
-
-
-
     }
+
+    async loginData(input) {
+        try {
+            const member = await this.memberModel
+                .findOne({mb_nick:input.mb_nick},{mb_nick: 1, mb_password: 1})
+                .exec();
+
+            assert.ok(member,Definer.auth_err2);
+
+            const isMatch = input.mb_password === member.mb_password;
+            assert.ok(isMatch,Definer.auth_err4);
+            return await this.memberModel
+            .findOne({
+                mb_nick:input.mb_nick
+            }).exec();
+
+        } catch (err) {
+            throw(err);
+        }
+
+
+
+
+}
 }
 
 module.exports = Member;
