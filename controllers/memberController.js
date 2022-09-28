@@ -29,7 +29,7 @@ memberController.login = async (req,res) => {
         res.json({state: 'fail',message: err.message});
     }
     
-};
+}; 
 
 memberController.logout = (req,res) => {
     console.log("GET cont.logout");
