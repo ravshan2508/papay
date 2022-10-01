@@ -50,9 +50,6 @@ class Member {
             throw(err);
         }
 
-
-
-
 }
 }
 
