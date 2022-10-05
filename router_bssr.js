@@ -3,6 +3,7 @@ const { addNewProduct } = require("./controllers/productController");
 const router_bssr = express.Router();
 const restaurantController = require('./controllers/restaurantController');
 const productController = require('./controllers/productController');
+const {uploadProductImage} = require('./utils/upload-multer');
 /**********************************
  *          REST API
  * 
@@ -24,7 +25,9 @@ router_bssr.get("/checkme", restaurantController.checkSessions);
 router_bssr.get("/products/menu", restaurantController.getMyRestaurantData);
 router_bssr.post('/products/create',
 restaurantController.validateAuthRestaurant,
-productController.addNewProduct);
+uploadProductImage.single('product_image'),
+productController.addNewProduct
+);
 router_bssr.post('/products/edit/:id',  productController.updateChosenProduct);
 
 
