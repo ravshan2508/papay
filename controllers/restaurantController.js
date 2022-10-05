@@ -2,6 +2,20 @@ const Member = require("../models/Member");
 
 let restaurantController = module.exports;
 
+restaurantController.getMyRestaurantData = async(req,res) =>{
+    try{
+        console.log("GET,cont/getMyRestaurantData");
+        // TODO Get my restaurant products
+        res.render('restaurant-menu');
+    } catch(err) {
+        console.log(`ERROR,cont/getMyRestaurantData,${err.message}`);
+        res.json({state: 'fail',message: err.message});
+    }
+};
+
+
+
+
 restaurantController.getSignupMyRestaurant = async(req,res) =>{
     try{
         console.log("GET,cont/getSignupMyRestaurant");
@@ -19,13 +33,21 @@ restaurantController.signupProcess = async (req,res) => {
         const member = new Member();
         const new_member =  await member.signupData(data);
 
-        res.json({state: 'success',data: new_member});
+        req.session.member = new_member;
+        res.redirect('/resto/products/menu');
     } catch(err) {
         console.log(`ERROR,cont/signup,${err.message}`);
         res.json({state: 'fail',message: err.message});
     }
     
 };
+
+
+
+
+// Session
+
+
 
 restaurantController.getLoginMyRestaurant = async(req,res) =>{
     try{
@@ -42,9 +64,15 @@ restaurantController.loginProcess = async (req,res) => {
         console.log(`POST: cont/login`);
         const data = req.body;
         const member = new Member();
-        const new_member =  await member.loginData(data);
+        result =  await member.loginData(data);
 
-        res.json({state: 'success',data: new_member});
+        req.session.member = result;
+        req.session.save(function () {
+            res.redirect('/resto/products/menu');
+        });
+
+
+        
     } catch(err) {
         console.log(`ERROR,cont/login,${err.message}`);
         res.json({state: 'fail',message: err.message});
@@ -56,3 +84,12 @@ restaurantController.logout = (req,res) => {
     console.log("GET cont.logout");
     res.send("You are in logout page");
 };
+
+restaurantController.checkSessions = (req,res) => {
+    if (req.session?.member) {
+        res.json({state: 'succeed', data: req.session.member});
+    } else {
+        res.json({state: 'fail', message: 'you are not authenticated'});
+    }
+};
+

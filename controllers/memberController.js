@@ -16,6 +16,8 @@ memberController.signup = async (req,res) => {
     
 };
 
+// Authenticate
+
 memberController.login = async (req,res) => {
     try {  
         console.log(`GET: cont/login`);
