@@ -1,3 +1,6 @@
+const assert = require('assert');
+const Definer = require('../lib/mistakes');
+
 let productController = module.exports;
 
 productController.getAllProducts = async (req,res) => {
@@ -12,6 +15,7 @@ productController.getAllProducts = async (req,res) => {
 productController.addNewProduct = async (req,res) => {
     try {
         console.log('POST: cont/addNewProduct');
+        assert(req.files, Definer.general_err3);
         
         // TODO Product creation develope
         res.send('ok');
