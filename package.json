@@ -7,6 +7,12 @@
     "start": "node server.js",
     "dev": "nodemon server.js",
     "train": "nodemon train.js",
+    "test_1": "nodemon test_1.js",
+    "test_2": "nodemon test_2.js",
+    "test_3": "nodemon test_3.js",
+    "test_4": "nodemon test_4.js",
+    "test_5": "nodemon test_5.js",
+    "test_6": "nodemon test_6.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Ravshan",

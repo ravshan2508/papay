@@ -44,7 +44,11 @@ productController.updateChosenProduct = async (req,res) => {
         console.log('POST: cont/updateChosenProduct');
         const product = new Product();
         const id = req.params.id;
-        const result = await product.updateChosenProductData(id,req.body,req.member._id);
+        const result = await product.updateChosenProductData(
+            id,
+            req.body,
+            req.member._id
+        );
         await res.json({state:'success', data: result});
 
 
