@@ -41,7 +41,7 @@ class Product {
 
     async updateChosenProductData(id,updated_data,mb_id) {
         try {
-            _id = shapeIntoMongooseObjectId(_id);
+            id = shapeIntoMongooseObjectId(id);
             mb_id = shapeIntoMongooseObjectId(mb_id);
 
             const result = await this.productModel
