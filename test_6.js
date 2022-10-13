@@ -2,7 +2,7 @@
 
 
 
-/*function Mitguruh (my_arr,my_str) {
+function Mitguruh (my_arr,my_str) {
     new_array=[];
     let index=0;
     while (index < my_arr.length) {
@@ -16,7 +16,7 @@
     console.log(new_array);
 }
 
-Mitguruh(['shawn','david','oscar','leo','ravshan','john'],'shawn','john');*/
+Mitguruh(['shawn','david','oscar','leo','ravshan','john'],'shawn','john');
 
 
 
@@ -24,14 +24,14 @@ Mitguruh(['shawn','david','oscar','leo','ravshan','john'],'shawn','john');*/
 /***************          ikkinchi usul                           ****** */
 
 
-
+/*
 const names = ['shawn','david','oscar','leo','ravshan','john'];
 const del_name1 ='shawn';
 const del_name2 ='john';
 
 const result = names.filter(name =>name != del_name1 && name != del_name2);
 
-console.log(result);
+console.log(result);*/
 
 
 /* darsdagi vazifa */
