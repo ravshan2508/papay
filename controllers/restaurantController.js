@@ -73,7 +73,7 @@ restaurantController.getLoginMyRestaurant = async(req,res) =>{
 
 restaurantController.loginProcess = async (req,res) => {
     try {  
-        console.log(`POST: cont/login`);
+        console.log(`POST: cont/loginProcess`);
         const data = req.body;
         const member = new Member();
         result =  await member.loginData(data);
@@ -85,7 +85,7 @@ restaurantController.loginProcess = async (req,res) => {
 
 
     } catch(err) {
-        console.log(`ERROR,cont/login,${err.message}`);
+        console.log(`ERROR,cont/loginProcess,${err.message}`);
         res.json({state: 'fail',message: err.message});
     }
     
