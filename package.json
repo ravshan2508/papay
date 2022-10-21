@@ -13,7 +13,6 @@
     "test_4": "nodemon test_4.js",
     "test_5": "nodemon test_5.js",
     "test_6": "nodemon test_6.js",
-    "amimal": "nodemon amimal.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Ravshan",
